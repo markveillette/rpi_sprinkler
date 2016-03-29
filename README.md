@@ -23,19 +23,19 @@ I used the Anvil plan.
 2.  mysql.  To install run the following (google "install mysql python raspberry pi" for more detailed instructions
 
 Make sure everything is up to date:   
-...
+```
 sudo apt-get update && sudo apt-get upgrade
-...
+```
 Install mysql server:   
-...
+```
 sudo apt-get install mysql-server
-...
+```
 (follow on screen instructions)
 
 Install python interface:  
-...
+```
 sudo apt-get install python-mysqldb
-...
+```
 
 
 ## Setup
