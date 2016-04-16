@@ -13,7 +13,7 @@ STATE = 'MA'
 # What is the daily threshold for running the sprinkler?
 RAIN_THRESHOLD_IN = 0.05
 
-# How long should the sprinkler run at a time in minutes?
+# How long should the sprinkler run?
 RUNTIME_MIN = 1
 
 # What GPIO will send the +5V?
@@ -69,9 +69,9 @@ def main():
     
     # If this is less than RAIN_THRESHOLD_IN run sprinkler
     if rainfall <= RAIN_THRESHOLD_IN:
-      log_file.write('%s: Starting sprinkler')
+      log_file.write('%s: Starting sprinkler\n' % datetime.now().isoformat() )
       run()
-      log_file.write('%s: Stopping sprinkler')
+      log_file.write('%s: Stopping sprinkler\n' % datetime.now().isoformat() )
       
 if __name__ == "__main__":
     main()
