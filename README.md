@@ -29,13 +29,13 @@ sudo pip install requests
 
 ## Setup
 
-Download or clone this repo onto your Raspberry pi.  This command will put the code under your home directory:
+Download or clone this repo onto your Raspberry pi.  These commands will put the code under your home directory:
 ```
 cd $HOME
 git clone https://github.com/markveillette/rpi_sprinkler.git
 cd rpi_sprinkler
 ```
-If you install the code somewhere esle remember the location.
+If you install the code somewhere else keep track of the location for the crontab file.
 
 If you look in this directory, you'll see two file with a `.sample` extension.  Start by copying or renaming these files to remove the `.sample` extension:
 ```
