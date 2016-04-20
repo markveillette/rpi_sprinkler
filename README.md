@@ -4,7 +4,7 @@ This project is still in development
 
 ## Synopsis
 
-Code to go along with Raspberry pi power sprinkler described here <url>
+Code to go along with Raspberry pi power sprinkler described here [URL]
 
 This code contains the script "run_sprinkler.py" which automatically runs an outside sprinkler 
 on a fixed schedule using a crontab.  The sprinkler will only run if there has been little to 
@@ -67,7 +67,7 @@ This should run the sprinkler without checking if it rained.  It will also make 
 
 ## Installation
 
-Finally, to install the crontab, open `run.crontab` and on the last line enter the full path to the script `run_sprinkler.py`.  If you followed the steps above this should already be done for you.  Set the hour(s) you want the sprinker to run at the start of the last line.  By default, it's set to run at 6am and 6pm every day.
+Finally, to install the crontab, open `run.crontab` and on the last line enter the full path to the script `run_sprinkler.py`.  If you followed the steps above this should already be done for you.  Set the hour(s) you want the sprinker to run at the start of the last line.  By default, it's set to run at 6am and 6pm every day.  Use military time and make sure you are consistent with the timezone of the pi. Google crontab for more info.
 
 To install the cron, run
 ```
