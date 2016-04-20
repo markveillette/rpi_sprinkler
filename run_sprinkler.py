@@ -94,7 +94,12 @@ def get_precip_in_window(config, time_win_hr=24):
         
     try:    
         t = t_yesterday + t_today
+        t.append(0)
         vals = vals_yesterday + vals_today
+        if len(vals)>0:
+          vals.append(vals[-1])
+        else:
+          vals.append(0)
         t_win = [s for s in t if s >= -time_win_hr * 3600]
         val_win = [vals[i] for i in range(len(vals)) if t[i] >= -time_win_hr * 3600]
         total = integrate(t_win, val_win)
