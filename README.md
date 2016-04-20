@@ -21,7 +21,7 @@ https://www.wunderground.com/weather/api/d/pricing.html
 Select the "Anvil" plan so you gain access to the most features.  This process should give you an API key that looks
 something like a string of numbers and letters, e.g. 3d42bd4e2f42a2eb.
 
-2.  The requests python module. Run these commands to get you what you need:   
+2.  You'll also need the requests python module. These commands will get everything you'll need:   
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install git
