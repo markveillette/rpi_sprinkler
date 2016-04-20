@@ -1,1 +1,0 @@
-00 06,18 * * * /usr/bin/python /home/pi/projects/sprinkler/run_sprinkler.py
