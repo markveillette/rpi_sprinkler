@@ -19,12 +19,14 @@ runtime_min = 15
 
 ####
 ## Rain threshold.  If daily rainfall (in inches) exceeds this amount,
-# the sprinkler will run.  
+# the sprinkler will not run.  
 rain_threshold_in = 0.05
 
 ####
-## GPIO pin connected to the starter for the sprinkler.
-gpio_starter = 23
+## GPIO pins to control the sprinkler and the status LEDs
+gpio_starter = 17
+gpio_LED1 = 27
+gpio_LED2 = 22
 
 ####
 ## Choose location and name of log file

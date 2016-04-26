@@ -115,18 +115,23 @@ def now():
 # Runs sprinkler
 def run_sprinkler(config):
   pin = int(config['gpio_starter'])
+  LED = int(config['gpio_LED1'])
   runtime = float(config['runtime_min'])
   with open(config['log_file'],'a') as log_file:
     try:
       GPIO.setup(pin, GPIO.OUT)
+      GPIO.setup(LED, GPIO.OUT)
       log_file.write('%s: Starting sprinkler\n' % now())
       GPIO.output(pin, GPIO.HIGH)
+      GPIO.output(LED, GPIO.HIGH)
       sleep(runtime * 60) 
       log_file.write('%s: Stopping sprinkler\n' % now())
       GPIO.output(pin, GPIO.LOW)
+      GPIO.output(LED, GPIO.LOW)
     except Exception as ex:
       log_file.write('%s: An error has occurred: %s \n' % (now(), ex.message))  
       GPIO.output(pin, GPIO.LOW)
+      GPIO.output(LED, GPIO.LOW)
 
 # Main method
 #   1.  Reads config file
@@ -189,23 +194,3 @@ if __name__ == "__main__":
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
-
-
-
-
-
-
-
-
-
-
