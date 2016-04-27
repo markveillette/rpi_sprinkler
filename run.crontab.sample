@@ -1,1 +1,1 @@
- 00 06,18 * * * /usr/bin/python /home/pi/rpi_sprinkler/run_sprinkler.py
+ 00 06,18 * * * /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
