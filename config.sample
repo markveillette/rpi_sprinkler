@@ -25,8 +25,8 @@ rain_threshold_in = 0.05
 ####
 ## GPIO pins to control the sprinkler and the status LEDs
 gpio_starter = 17
-gpio_LED1 = 27
-gpio_LED2 = 22
+gpio_led1 = 27
+gpio_led2 = 22
 
 ####
 ## Choose location and name of log file
