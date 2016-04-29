@@ -104,5 +104,13 @@ Once you're set up the run.crontab file, install the crontab by entering
 ```
 sudo crontab run.crontab
 ```
-and you should be all set.  Check the log file every now and then to monitor how things are going.  Good luck!
+and you should be all set.  Check the log file every now and then to monitor how things are going.  
+
+If you restart the raspberry pi, the crontab should restart with it.  To check if it's running, enter
+```
+sudo crontab -l
+```
+and you should see the contents of `run.crontab` appear.  If you see nothing, you'll need to reinstall the crontab.  If you ever want to remove the crontab, enter `sudo crontab -r`.
+
+Good luck!
 
