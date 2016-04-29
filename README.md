@@ -25,7 +25,7 @@ sudo pip install requests
 
 ## Setup
 
-Download or clone this repo onto your Raspberry pi.  These commands will put the code under your home directory:
+Download or clone this repo onto your Raspberry pi.  These commands will put a `rpi_sprinkler` directory containing code under your home directory:
 ```
 cd $HOME
 git clone https://github.com/markveillette/rpi_sprinkler.git
