@@ -1,7 +1,3 @@
-## Status
-
-This project is still in development
-
 ## Synopsis
 
 Code to go along with the [Raspberry Pi Controlled Irrigation System](http://www.instructables.com/id/Raspberry-Pi-Controlled-Irrigation-System) Instructable by Ben Finio.
