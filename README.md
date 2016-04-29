@@ -37,7 +37,7 @@ cd rpi_sprinkler
 ```
 If you install the code somewhere else keep track of the location for the crontab file.
 
-If you look in this directory, you'll see two file with a `.sample` extension.  Start by copying or renaming these files to remove the `.sample` extension:
+If you look in this directory, you'll see two files with a `.sample` extension.  Start by copying or renaming these files to remove the `.sample` extension:
 ```
 cp config.sample config
 cp run.crontab.sample run.crontab
@@ -65,7 +65,7 @@ This should run the sprinkler without checking if it rained.  It will also make 
 
 ## Installing the crontab
 
-Now that the script is working, the final step is to install a crontab so that the script runs on a fixed schedule.  A crontab (or cron for short) is a simple text file that can be used by Linux to schedule tasks to run at specified times.  We'll be setting a cron to execute the script run_sprinkler.py.
+Now that the script is working, the final step is to install a crontab so that `run_sprinkler.py` runs on a fixed schedule.  A crontab (or cron for short) is a simple text file that is used by Linux to run tasks at specified times.  We'll be setting a cron to execute the script run_sprinkler.py.
 
 To setup the crontab, open `run.crontab` with your favorite text editor.  The basic format of the crontab file is as follows (lines begining with "#" are comments):
 
