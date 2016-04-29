@@ -63,29 +63,46 @@ sudo python run_sprinkler.py force
 ```
 This should run the sprinkler without checking if it rained.  It will also make a note in the log file (specified in the `config` file).  If this doesn't work, check the GPIO pin in `config` is correct.
 
-## Installation
+## Installing the crontab
 
-Finally, to install the crontab, open `run.crontab` and on the last line enter the full path to the script `run_sprinkler.py`.  If you followed the steps above this should already be done for you.  Set the hour(s) you want the sprinker to run at the start of the last line.  By default, it's set to run at 6am and 6pm every day.  Use military time and make sure you are consistent with the timezone of the pi. Google crontab for more info.
+Now that the script is working, the final step is to install a crontab so that the script runs on a fixed schedule.  A crontab (or cron for short) is a simple text file that can be used by Linux to schedule tasks to run at specified times.  We'll be setting a cron to execute the script run_sprinkler.py.
 
-To install the cron, run
+To setup the crontab, open `run.crontab` with your favorite text editor.  The basic format of the crontab file is as follows (lines begining with "#" are comments):
+
+```
+# minute   hour    day of month   month    weekday      Command    
+# (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
+    *        *        *           *           *         command
+```
+
+Decide what schedule you'd like to set and replace the approprite asteriks * with the weekdays,hours,minutes, etc you'd like.  For example, to execute run_sprinkler.py every day at 6am and 6pm, `run.crontab` should look like this:
+
+```
+# minute   hour    day of month   month    weekday      Command    
+# (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
+    0      6,18        *             *         *        /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+```
+
+Where the "6,18" in the hour column and *'s everywhere else means to run at 6:00 and 18:00 local time every day.  Notice that we included the full paths to both python2.7 and the run_sprinkler.py script (if you have the script in a different location make sure to modify the path).  The Linux environment that a crontab run is typically very minimal, so it's safe not to assume anything about your $PATH or other environment variables.  
+
+This example will run at 12pm every Monday, Wednesday and Friday:
+```
+# minute   hour    day of month   month    weekday      Command    
+# (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
+    0      12         *             *       1,3,5       /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+```
+
+This will run at 6pm every second day:
+```
+# minute   hour    day of month   month    weekday      Command    
+# (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
+    0      18        */2           *         *       /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+```
+Google "crontab examples" for more.  
+
+Once you're set up the run.crontab file, install the crontab by entering
 ```
 sudo crontab run.crontab
 ```
-Check the log file to monitor how things are going.  Good luck!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+and you should be all set.  Check the log file every now and then to monitor how things are going.  Good luck!
 
