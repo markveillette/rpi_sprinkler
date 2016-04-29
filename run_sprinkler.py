@@ -21,7 +21,9 @@ def load_config(filename='config'):
       raise Exception('Unable to find config file')
 
 # Method to access weather underground current conditions API and return 
-# the "precip_today_in" field 
+# the "precip_today_in" field.  This function may be used as an alternative to  
+# get_precip_in_window -- it will give a move accurate rainfall amount but it only 
+# measures rainfall since 12am local time.  Not helpful if it rained yesterday evening.
 def get_precip_today_in(config):
   API_URL = 'http://api.wunderground.com/api/{key}/conditions/q/{state}/{town}.json'
   r = requests.get(API_URL.format(key=config['api_key'],
@@ -57,7 +59,9 @@ def get_rainfall(r):
 def integrate(t, vals):
     total = 0.0
     for i in range(len(vals) - 1):
-        total += 0.5 * (vals[i] + vals[i + 1]) * (t[i + 1] - t[i])
+        r = 0.5 * (vals[i] + vals[i + 1]) * (t[i + 1] - t[i])
+        if r > 0: # sanity check in case of bad vals
+            total += r
     return total
 
 # Calls weather underground history api
@@ -72,7 +76,7 @@ def get_wu_history(config, day):
 # Gets recent rainfall using weather underground API
 # By default estimates rainfall in past 24 hours
 # to get something different use a different time_win
-# (Note this doesn't go later than yesterday)
+# (Note this doesn't go further back than yesterday)
 def get_precip_in_window(config, time_win_hr=24):
     
     yesterday = (datetime.datetime.today() - \
