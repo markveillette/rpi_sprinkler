@@ -83,7 +83,7 @@ Decide what schedule you'd like to set and replace the approprite asteriks * wit
     0      6,18        *             *         *        /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
 ```
 
-Where the "6,18" in the hour column and *'s everywhere else means to run at 6:00 and 18:00 local time every day.  Notice that we included the full paths to both python2.7 and the run_sprinkler.py script (if you have the script in a different location make sure to modify the path).  The Linux environment that a crontab run is typically very minimal, so it's safe not to assume anything about your $PATH or other environment variables.  
+Where the "6,18" in the hour column and *'s everywhere else means to run at 6:00 and 18:00 local time every day.  Notice that we included the full paths to both python2.7 and the run_sprinkler.py script (if you have the script in a different location make sure to modify the path).  The Linux environment in which a crontab runs is typically very minimal, so it's safe not to assume anything about your $PATH or other environment variables.
 
 This example will run at 12pm every Monday, Wednesday and Friday:
 ```
