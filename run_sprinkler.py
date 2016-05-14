@@ -4,9 +4,9 @@ import requests
 import ConfigParser
 import datetime
 from time import sleep
-import RPi.GPIO as GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
+#import RPi.GPIO as GPIO
+#GPIO.setwarnings(False)
+#GPIO.setmode(GPIO.BCM)
 
 # Loads configuration file
 def load_config(filename='config'):
@@ -168,13 +168,22 @@ def test_api():
   if total is None:
     print "API works but unable to get history.  Did you sign up for the right plan?"
     return
-  print "API seems to be working with today's rainfall=%f and past 24 hour rainfall=%f" % (rainfall,total)  
+  print "API seems to be working with past 24 hour rainfall=%f" % (total)  
     
 # Runs without checking rainfall
 def force_run():
   config = load_config()
   run_sprinkler(config)
-      
+  
+# Sets all GPIO pins to GPIO.LOW.  Should be run when the 
+# raspberry pi starts.
+def init():
+    config = load_config()
+    pin = int(config['gpio_starter'])
+    led = int(config['gpio_led1'])
+    GPIO.setup((pin, led), GPIO.OUT)
+    GPIO.output((pin,led), GPIO.LOW)      
+    
 if __name__ == "__main__":
   if len(sys.argv) == 1:
     # Standard mode
@@ -186,6 +195,9 @@ if __name__ == "__main__":
   elif len(sys.argv) == 2 and sys.argv[1] == 'force':
     # Runs sprinkler regardless of rainfall
     force_run()
+  elif len(sys.argv) == 2 and sys.argv[1] == 'init':
+    # Sets pin and led GPIOs to GPIO.LOW
+    init()
   else:
     print "Unknown inputs", sys.argv
         
