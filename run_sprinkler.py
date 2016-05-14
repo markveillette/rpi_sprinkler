@@ -4,9 +4,9 @@ import requests
 import ConfigParser
 import datetime
 from time import sleep
-#import RPi.GPIO as GPIO
-#GPIO.setwarnings(False)
-#GPIO.setmode(GPIO.BCM)
+import RPi.GPIO as GPIO
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 
 # Loads configuration file
 def load_config(filename='config'):
