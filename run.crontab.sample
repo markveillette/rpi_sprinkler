@@ -2,3 +2,4 @@
 # (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
     0      6,18       *            *          *        /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py 
 @reboot                                                /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py init > /home/pi/cron_on_reboot_errors.log 2>&1
+
