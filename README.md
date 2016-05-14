@@ -102,6 +102,8 @@ sudo crontab run.crontab
 ```
 and you should be all set.  Check the log file every now and then to monitor how things are going.  
 
+UPDATE (5/14/16):  I added a @reboot command on the last line of the crontab file that sets all GPIO pins used to GPIO.LOW when the pi restarts.  This was done to make sure the sprinkler doesn't run spontaneously if the pi accidentally reboots.  If you installed rpi_sprinker in a different spot, make sure the path to `run_sprinkler.py` matches on this line as well.
+
 If you restart the raspberry pi, the crontab should restart with it.  To check if it's running, enter
 ```
 sudo crontab -l
