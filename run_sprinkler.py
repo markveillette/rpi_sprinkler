@@ -118,20 +118,29 @@ def now():
 
 # Runs sprinkler
 def run_sprinkler(config):
-  pin = int(config['gpio_starter'])
+  pin1 = int(config['gpio_starter1'])
+  pin2 = int(config['gpio_starter2'])
   led = int(config['gpio_led1'])
   runtime = float(config['runtime_min'])
   with open(config['log_file'],'a') as log_file:
     try:
-      GPIO.setup((pin, led), GPIO.OUT)
-      log_file.write('%s: Starting sprinkler\n' % now())
-      GPIO.output((pin,led), GPIO.HIGH)
+      GPIO.setup((pin1, led), GPIO.OUT)
+      log_file.write('%s: Starting sprinkler 1\n' % now())
+      GPIO.output((pin1,led), GPIO.HIGH)
       sleep(runtime * 60) 
-      log_file.write('%s: Stopping sprinkler\n' % now())
-      GPIO.output((pin,led), GPIO.LOW)
+      log_file.write('%s: Stopping sprinkler 1\n' % now())
+      GPIO.output((pin1,led), GPIO.LOW)
+      
+      GPIO.setup((pin2, led), GPIO.OUT)
+      log_file.write('%s: Starting sprinkler 2\n' % now())
+      GPIO.output((pin2,led), GPIO.HIGH)
+      sleep(runtime * 60) 
+      log_file.write('%s: Stopping sprinkler 2\n' % now())
+      GPIO.output((pin2,led), GPIO.LOW)
     except Exception as ex:
-      log_file.write('%s: An error has occurred: %s \n' % (now(), ex.message))  
-      GPIO.output((pin,led), GPIO.LOW)
+      log_file.write('%s: An error has occurred: %s \n' % (now(), ex.message))
+      GPIO.output((pin1,led), GPIO.LOW)
+      GPIO.output((pin2,led), GPIO.LOW)
 
 # Main method
 #   1.  Reads config file
@@ -179,10 +188,13 @@ def force_run():
 # raspberry pi starts.
 def init():
     config = load_config()
-    pin = int(config['gpio_starter'])
+    pin1 = int(config['gpio_starter1'])
+    pin2 = int(config['gpio_starter2'])
     led = int(config['gpio_led1'])
-    GPIO.setup((pin, led), GPIO.OUT)
-    GPIO.output((pin,led), GPIO.LOW)      
+    GPIO.setup((pin1, led), GPIO.OUT)
+    GPIO.setup((pin2, led), GPIO.OUT)
+    GPIO.output((pin1,led), GPIO.LOW)
+    GPIO.output((pin2,led), GPIO.LOW)
     
 if __name__ == "__main__":
   if len(sys.argv) == 1:
