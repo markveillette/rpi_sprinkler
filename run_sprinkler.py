@@ -119,7 +119,7 @@ def now():
 # Runs sprinkler
 def run_sprinkler(config):
   pin1 = int(config['gpio_starter1'])
-  pin2 = int(config['gpio_starter1'])
+  pin2 = int(config['gpio_starter2'])
   led = int(config['gpio_led1'])
   runtime = float(config['runtime_min'])
   with open(config['log_file'],'a') as log_file:
