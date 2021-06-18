@@ -72,28 +72,28 @@ To setup the crontab, open `run.crontab` with your favorite text editor.  The ba
     *        *        *           *           *         command
 ```
 
-Decide what schedule you'd like to set and replace the approprite asteriks * with the weekdays,hours,minutes, etc you'd like.  For example, to execute run_sprinkler.py every day at 6am and 6pm, `run.crontab` should look like this:
+Decide what schedule you'd like to set and replace the approprite asteriks * with the weekdays,hours,minutes, etc you'd like.  For example, to execute `run_sprinkler.py` every day at 6am and 6pm, `run.crontab` should look like this:
 
 ```
 # minute   hour    day of month   month    weekday      Command    
 # (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
-    0      6,18        *             *         *        /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+    0      6,18        *             *         *        /usr/bin/python3 /home/pi/rpi_sprinkler/run_sprinkler.py
 ```
 
-Where the "6,18" in the hour column and *'s everywhere else means to run at 6:00 and 18:00 local time every day.  Notice that we included the full paths to both python2.7 and the run_sprinkler.py script (if you have the script in a different location make sure to modify the path).  The Linux environment in which a crontab runs is typically very minimal, so it's safe not to assume anything about your $PATH or other environment variables.
+Where the "6,18" in the hour column and *'s everywhere else means to run at 6:00 and 18:00 local time every day.  Notice that we included the full paths to both python3 and the run_sprinkler.py script (if you have the script in a different location make sure to modify the path).  The Linux environment in which a crontab runs is typically very minimal, so it's safe not to assume anything about your $PATH or other environment variables.
 
 This example will run at 12pm every Monday, Wednesday and Friday:
 ```
 # minute   hour    day of month   month    weekday      Command    
 # (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
-    0      12         *             *       1,3,5       /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+    0      12         *             *       1,3,5       /usr/bin/python3 /home/pi/rpi_sprinkler/run_sprinkler.py
 ```
 
 This will run at 6pm every second day:
 ```
 # minute   hour    day of month   month    weekday      Command    
 # (0-59)  (0-23)    (1-31)       (1-12)     (0-6)                
-    0      18        */2           *         *       /usr/bin/python2.7 /home/pi/rpi_sprinkler/run_sprinkler.py
+    0      18        */2           *         *       /usr/bin/python3 /home/pi/rpi_sprinkler/run_sprinkler.py
 ```
 Google "crontab examples" for more.  
 
