@@ -8,19 +8,20 @@ no rain in the past 24 hours.  The script uses the Weather Underground API to es
 
 ## Requirements
 
-This project requires a free developer API key to Weather Underground.  Go here to register for one:
+This project requires a free developer API key to the Open Weather API.  Go here to register for one:
+https://openweathermap.org/api
 
-https://www.wunderground.com/weather/api/d/pricing.html
+Specifically, this uses the one call api which is available for free
+https://openweathermap.org/api/one-call-api#history
 
-Select the "Anvil" plan so you gain access to the most features.  This process should give you an API key that looks
-something like a string of numbers and letters, e.g. 3d42bd4e2f42a2eb.
 
 You'll also need the requests python module. These commands will get everything you'll need:   
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install git
 sudo apt-get install python-pip
-sudo pip install requests
+pip install requests
+pip install configparser
 ```
 
 ## Setup
